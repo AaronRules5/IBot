@@ -3,17 +3,31 @@ This discord bot was first conceptualized by Tarrabyte and
 was cleaned up by AaronRules5!
 Have fun!
 */
-
  const Discord = require("discord.js");
  const client = new Discord.Client();
 
- client.on("ready", () => {client.user.setUsername("IsabelleBot");
-  console.log(`Logged in as ${client.user.tag}!`);
-  var guild = client.guilds.cache.find(guild => {guild.id == "870370270551105556"});
-  var botChannel = guild.channels.cache.find(channel => {channel.name == "bot-test"});
-  botChannel.send("I am online.");
- });
+ var defaultGuildID = "870370270551105556"; //Furville Mall
+ var defaultBotChannel = "bot-test";
+ var DISCORD_TOKEN = "you put it in! not me! :3";
 
+ function getChannelFromName(channelName){
+  return client.channels.cache.find(channel => (channel.name.toLowerCase() == channelName.toLowerCase() && channel.guild.id == defaultGuildID));
+ }
+
+  client.on("ready", () => {
+  client.user.setUsername("IsabelleBot");
+  console.log(`Logged in as ${client.user.tag}!`);
+  getChannelFromName(defaultBotChannel).send("I am online.");
+  });
+
+var welcomeMessage = 
+  client.on("guildMemberAdd", member => {
+    if (member.user == client.user) return true;
+
+      member.createDM(true).then(newDM => {
+      newDM.send("**__Welcome " + member.user.username + "!__** \n```FIX\nYou have entered Furville Mall! What is this place? It's a furry creator mall of sorts! Do you create art? Fursuits? Paws? Tails?Ears? feet? Anything of that nature is welcome here! We will try to help you sell! Ask how! You are welcome to talk about things in #Just-A-chat to others. Please make sure to read the #rules, the #readme is optional, but helpful. A small reminder to mute the channels you don't wish to use. For a list of commands please type >help and I will assist you with what I can!```\n \nTo get started type in **>getting-started** to get the help you need here!");
+  });
+});
 
  var prefix = ">";
 
@@ -24,7 +38,8 @@ Have fun!
  
  function uploadFile(msg,path,string){
    if (!string) string = "";
-   msg.reply(string,{files:[path]});
+     msg.reply(string,{files:[path]}).then(value=>{return value},reason=>{
+       console.log("Warning! File not found! \"" + path + "\"!")});
  }
  
 
@@ -36,7 +51,6 @@ Have fun!
       msg.channel.send("Ask Tarra to set it. You don't have the permission!");
     }
 }
-
 
   /*
  The name of the command, and the message sent by the bot are in "key" : "value" pairs.
@@ -60,6 +74,9 @@ Have fun!
 
  Oh also in a value you can do "@" and an existing key name to copy a value from that key name.
 
+ Please be aware that quotes take "@" priority over commands.
+ This means that if you have a quote and a command of the SAME NAME and want them to do the SAME THING
+ Then the command should always link to the quote, not the other way around.
 */
  var messageList = {
   
@@ -85,6 +102,7 @@ Have fun!
   }, 
 
   "commands" : {
+    "invite" : "@invite",
     "ping" : "Pong!",
     "what-is-discord" : "**__What is Discordapp?__** \n Discord app is a client that allows you to talk to a lot of different users at once. It allows you to communicate with several different people at once. Ever been on an IRC chat? AIM? AOL or Compuserve chat rooms? Or even Skype. Think that. It's alot easier. Anyone can set up a server, set it's region, and so forth.\n **__Why should you use Discord over?__** \n Discordapp is based on servers. You could be in the middle of the desert or the ocean and still be able to talk to the server you're in as long as you have a stable connection to that sattelite! \n Discordapp was originally meant for gamers all over for PC but it turned into more. It turned into people using it as the new chatroom method, making friendships and making their own personal groups! Discord has so many different uses. I suggest checking out discord.me for more groups! Even asking people in other servers what they think!",
     "ibot" : "My name is Isabelle. My initial creator is Tarrabyte, and I was edited by AaronRules5. I was created as a welcome bot, but my functions may go beyond that in the future. Lets see what all I do!",
@@ -99,7 +117,7 @@ Have fun!
     "MHA" : "**__My Hero Acadamia Commands__** \n deku1 \n",
     "aaron" : "Ohoho! Secret command!",
     "naughty" : "**__Naughty commands__** \n  tits \n boobies \n black-cock \n pussy \n ass \n",
-    "lc" : "**__Lewds__** \nLewd \n naughty",
+    "lc" : "\n **__Lewds__** \nLewd \n naughty",
     "implying" : " ```css\n >FAGGOT!```",
     "DDLC" : "**__Doki Doki literature Club Commands__** \n natsuki \n yuri \n monika \n sayori \n puke \n ",
     "w" : " **__Welcome!__** \n```FIX\nYou have entered Furville Mall! What is this place? It's a furry creator mall of sorts! Do you create art? Fursuits? Paws? Tails?Ears? feet? Anything of that nature is welcome here!You are welcome to talk about things in #Just-A-chat to others. Please make sure to read the #rules, the #readme is optional, but helpful. A small reminder to mute the channels you don't wish to use. For a list of commands please type >help and I will assist you with what I can!\n``` \nTo get started type in **>getting started** to get the help you need here!",
@@ -172,29 +190,20 @@ client.on('message', msg => {
   if (!mergeGrab){
     return false;
   }
-
+`msg.reply`
   if (typeof(mergeGrab) == "string"){
     if (mergeGrab.startsWith("@")) mergeGrab = getKeyValue(messageList,mergeGrab.substr(1));
     msg.reply(mergeGrab);
     return true;
   }
- 
+
   if (typeof(mergeGrab == "function")){
     mergeGrab(msg);
     return true;
   }
-  
+
 });
 
-client.on("guildMemberAdd", member => {
-  const channel = member.guild.channels.cache.find(channel => channel.name == "main");
-  if (!channel){
-    return false;
-  }
-channel.send(" **__Welcome!__** \n```FIX\nYou have entered Furville Mall! What is this place? It's a furry creator mall of sorts! Do you create art? Fursuits? Paws? Tails?Ears? feet? Anything of that nature is welcome here! We will try to help you sell! Ask how! You are welcome to talk about things in #Just-A-chat to others. Please make sure to read the #rules, the #readme is optional, but helpful. A small reminder to mute the channels you don't wish to use. For a list of commands please type >help and I will assist you with what I can!```\n \nTo get started type in **>getting-started** to get the help you need here!");
-}
-);
-
-client.login("ENTER-DISCORD-TOKEN-HERE");
+client.login(DISCORD_TOKEN);
 
  
