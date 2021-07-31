@@ -190,7 +190,7 @@ client.on('message', msg => {
   if (!mergeGrab){
     return false;
   }
-`msg.reply`
+  
   if (typeof(mergeGrab) == "string"){
     if (mergeGrab.startsWith("@")) mergeGrab = getKeyValue(messageList,mergeGrab.substr(1));
     msg.reply(mergeGrab);
