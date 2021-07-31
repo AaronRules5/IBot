@@ -150,8 +150,13 @@ client.on('message', msg => {
 
   var quoteGrab = getKeyValue(messageList["quotes"],msg.content);
 
-  if (msg.content.startsWith(prefix) && !quoteGrab){
+  if (msg.content.startsWith(prefix)){
     var comGrab = getKeyValue(messageList["commands"],msg.content.substr(1).split(" ")[0])
+  }
+
+  if (quoteGrab && comGrab){
+    console.log("WARNING! Both quote and command found of same name found.. somehow?! Returning false!");
+    return false;
   }
   
   var mergeGrab = quoteGrab || comGrab;
@@ -161,9 +166,9 @@ client.on('message', msg => {
   }
 
   if (typeof(mergeGrab) == "string"){
-  if (mergeGrab.startsWith("@")) mergeGrab = getKeyValue(messageList,mergeGrab.substr(1));
-  msg.reply(mergeGrab);
-  return true;
+    if (mergeGrab.startsWith("@")) mergeGrab = getKeyValue(messageList,mergeGrab.substr(1));
+    msg.reply(mergeGrab);
+    return true;
   }
  
   if (typeof(mergeGrab == "function")){
@@ -178,9 +183,9 @@ client.on("guildMemberAdd", member => {
   if (!channel){
     return false;
   }
-channel.send(" **__Welcome!__** \n```FIX\nYou have entered Furville Mall! What is this place? It's a furry creator mall of sorts! Do you create art? Fursuits? Paws? Tails?Ears? feet? Anything of that nature is welcome here! We will try to help you sell! Ask how! You are welcome to talk about things in #Just-A-chat to others. Please make sure to read the #rules, the #readme is optional, but helpful. A small reminder to mute the channels you don't wish to use. For a list of commands please type >help and I will assist you with what I can!```\n \nTo get started type in **>getting started** to get the help you need here!"
+channel.send(" **__Welcome!__** \n```FIX\nYou have entered Furville Mall! What is this place? It's a furry creator mall of sorts! Do you create art? Fursuits? Paws? Tails?Ears? feet? Anything of that nature is welcome here! We will try to help you sell! Ask how! You are welcome to talk about things in #Just-A-chat to others. Please make sure to read the #rules, the #readme is optional, but helpful. A small reminder to mute the channels you don't wish to use. For a list of commands please type >help and I will assist you with what I can!```\n \nTo get started type in **>getting started** to get the help you need here!");
+}
 );
-});
 
 client.login("ENTER-DISCORD-TOKEN-HERE");
 
