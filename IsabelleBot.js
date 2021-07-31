@@ -149,6 +149,10 @@ function getKeyValue(object,key){
 
 client.on('message', msg => {
 
+  if (msg.author == client.user){
+    return false;
+  }
+
   var quoteGrab = getKeyValue(messageList["quotes"],msg.content);
 
   if (msg.content.startsWith(prefix)){
