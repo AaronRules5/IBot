@@ -90,7 +90,7 @@ Have fun!
     "help" : "**__If you want to use a command, use > then use coms. The commands don't have spellcheck so make sure to get them right.__**",
     "tags" : "**__Tags for Isabelle__**\n Ask a @mod to make you to tag you! Curret tags are @furries @creator @artist that you can pick up!",
     "getting-started" : "**__So you wanna sell here eh?__**\n So you've come here to ask for a space in the server? That's cool! Our goal here with this server is to help people find work, make some extra money even trade if they wish! \n To get a Category and channels of your own, please show to the admins that you have at least 1 website that you host your content too. This can be any social media, Etsy, or directly! \n",
-    "coms" : "**__Commands!__** \n __Commands can be used by using the `>` and then any of the known commands.__ \n Isabelle swag \n invite`*` \n help \n tags \n what is discord \n ping \n coms (commands) \n hi \n Dad can I \n w - Welcome \n xD`*` \n DDLC \n MHA - My Hero Acadamia \n lc - lewd images \n nintendo \n OwO whats dis?`*` getting-started \n",
+    "coms" : "**__Commands!__** \n __Commands can be used by using the `>` and then any of the known commands.__ \n Isabelle-swag \n invite`*` \n help \n tags \n what-is-discord \n ping \n coms (commands) \n hi \n Dad can I \n w - Welcome \n xD`*` \n DDLC \n MHA - My Hero Acadamia \n lc - lewd images \n nintendo \n OwO whats dis?`*` getting-started \n",
     "nintendo" : "**__Nintendo Commands__** \n adding-player \n",
     "isabelle-swag" : "**_Isabelle Commands__** \n These are a lost of commands that you can use on me, _Isabelle.  \n _Isabelle\n tea \n _Isabelle, what are you?",
     "MHA" : "**__My Hero Acadamia Commands__** \n deku1 \n",
@@ -188,7 +188,7 @@ client.on("guildMemberAdd", member => {
   if (!channel){
     return false;
   }
-channel.send(" **__Welcome!__** \n```FIX\nYou have entered Furville Mall! What is this place? It's a furry creator mall of sorts! Do you create art? Fursuits? Paws? Tails?Ears? feet? Anything of that nature is welcome here! We will try to help you sell! Ask how! You are welcome to talk about things in #Just-A-chat to others. Please make sure to read the #rules, the #readme is optional, but helpful. A small reminder to mute the channels you don't wish to use. For a list of commands please type >help and I will assist you with what I can!```\n \nTo get started type in **>getting started** to get the help you need here!");
+channel.send(" **__Welcome!__** \n```FIX\nYou have entered Furville Mall! What is this place? It's a furry creator mall of sorts! Do you create art? Fursuits? Paws? Tails?Ears? feet? Anything of that nature is welcome here! We will try to help you sell! Ask how! You are welcome to talk about things in #Just-A-chat to others. Please make sure to read the #rules, the #readme is optional, but helpful. A small reminder to mute the channels you don't wish to use. For a list of commands please type >help and I will assist you with what I can!```\n \nTo get started type in **>getting-started** to get the help you need here!");
 }
 );
 
