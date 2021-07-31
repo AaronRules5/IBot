@@ -9,6 +9,9 @@ Have fun!
 
  client.on("ready", () => {client.user.setUsername("IsabelleBot");
   console.log(`Logged in as ${client.user.tag}!`);
+  var guild = client.guilds.cache.find(guild => {guild.id == "870370270551105556"});
+  var botChannel = guild.channels.cache.find(channel => {channel.name == "bot-test"});
+  botChannel.send("I am online.");
  });
 
 
