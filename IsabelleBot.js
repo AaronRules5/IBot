@@ -135,6 +135,7 @@ for (var x in messageList["commands"]){
 
 
 //This getKeyValue function I made is a straight up MIRACLE...
+//AND it should work if parameters are ever added to commands!!! :D
 function getKeyValue(object,key){
   var objectKeys = Object.keys(object);
   for (var i = 0; i < objectKeys.length; i++){
