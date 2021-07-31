@@ -1,2 +1,2 @@
 # Isabelle-Bot
- A bot created by Tarrabyte. I HEAVILY edited it to be better.
+ A bot first conceptualized by Tarrabyte. I edited it HEAVILY to look cleaner and hopefully work better.
