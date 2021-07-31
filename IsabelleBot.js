@@ -94,6 +94,7 @@ Have fun!
     "nintendo" : "**__Nintendo Commands__** \n adding-player \n",
     "isabelle-swag" : "**_Isabelle Commands__** \n These are a lost of commands that you can use on me, _Isabelle.  \n _Isabelle\n tea \n _Isabelle, what are you?",
     "MHA" : "**__My Hero Acadamia Commands__** \n deku1 \n",
+    "aaron" : "Ohoho! Secret command!",
     "naughty" : "**__Naughty commands__** \n  tits \n boobies \n black-cock \n pussy \n ass \n",
     "lc" : "**__Lewds__** \nLewd \n naughty",
     "implying" : " ```css\n >FAGGOT!```",
