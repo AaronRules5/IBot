@@ -158,7 +158,7 @@ client.on('message', msg => {
   var mergeGrab = quoteGrab || comGrab;
 
   if (!mergeGrab){
-    return true;
+    return false;
   }
 
   if (typeof(mergeGrab) == "string"){
