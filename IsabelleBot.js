@@ -9,46 +9,45 @@ Have fun!
  var defaultGuildID = "870370270551105556"; //Furville Mall
  var defaultBotChannel = "bot-test";
  var DISCORD_TOKEN = "you put it in! not me! :3";
+ var prefix = ">";
+
+ if (prefix.length != 1){
+   console.log("Error! Command prefix character length is not equal to 1! This may cause problems! Exiting...")
+   process.exit(1);
+ }
 
  function getChannelFromName(channelName){
   return client.channels.cache.find(channel => (channel.name.toLowerCase() == channelName.toLowerCase() && channel.guild.id == defaultGuildID));
  }
 
-  client.on("ready", () => {
+client.on("ready", () => {
   client.user.setUsername("IsabelleBot");
   console.log(`Logged in as ${client.user.tag}!`);
+  //For some strange reason Tarrabyte cannot get the channel cache so I've commented out this line for now.
   //getChannelFromName(defaultBotChannel).send("I am online.");
-  });
+});
 
   client.on("guildMemberAdd", member => {
     if (member.user == client.user) return true;
-
-      member.createDM(true).then(newDM => {
-      newDM.send("**__Welcome " + member.user.username + "!__** \n```FIX\nYou have entered Furville Mall! What is this place? It's a furry creator mall of sorts! Do you create art? Fursuits? Paws? Tails?Ears? feet? Anything of that nature is welcome here! We will try to help you sell! Ask how! You are welcome to talk about things in #Just-A-chat to others. Please make sure to read the #rules, the #readme is optional, but helpful. A small reminder to mute the channels you don't wish to use. For a list of commands please type >help and I will assist you with what I can!```\n \nTo get started type in **>getting-started** to get the help you need here!");
+    member.createDM(true).then(newDM => {
+    newDM.send("**__Welcome " + member.user.username + "!__** \n```FIX\nYou have entered Furville Mall! What is this place? It's a furry creator mall of sorts! Do you create art? Fursuits? Paws? Tails?Ears? feet? Anything of that nature is welcome here! We will try to help you sell! Ask how! You are welcome to talk about things in #Just-A-chat to others. Please make sure to read the #rules, the #readme is optional, but helpful. A small reminder to mute the channels you don't wish to use. For a list of commands please type >help and I will assist you with what I can!```\n \nTo get started type in **>getting-started** to get the help you need here!");
   });
 });
-
- var prefix = ">";
-
- if (prefix.length != 1){
-   console.log("Error! Command prefix character length is not equal to 1! This may cause problems! Exiting...")
-   return false;
- }
  
  function uploadFile(msg,path,string){
    if (!string) string = "";
      msg.reply(string,{files:[path]}).then(value=>{return value},reason=>{
-       console.log("Warning! File not found! \"" + path + "\"!")});
- }
- 
+       console.log("Warning! File not found! \"" + path + "\"!")
+     });
+}
 
  function changeStatus(msg){
-  if (msg.author.id == "90814302981754880"){
-    client.user.setGame(msg.content.split(" ")[1]);
-    }
-    else {
-      msg.channel.send("Ask Tarra to set it. You don't have the permission!");
-    }
+  if (msg.author.id != "90814302981754880"){
+    msg.channel.send("Ask Tarra to set it. You don't have the permission!");
+    return false;
+  }
+  
+  client.user.setGame(msg.content.split(" ")[1]);
 }
 
   /*
@@ -150,7 +149,6 @@ for (var x in messageList["commands"]){
   }
 }
 
-
 //This getKeyValue function I made is a straight up MIRACLE...
 //AND it should work if parameters are ever added to commands!!! :D
 function getKeyValue(object,key){
@@ -178,17 +176,10 @@ client.on('message', msg => {
   if (msg.content.startsWith(prefix)){
     var comGrab = getKeyValue(messageList["commands"],msg.content.substr(1).split(" ")[0])
   }
-
-  if (quoteGrab && comGrab){
-    console.log("WARNING! Both quote and command found of same name found.. somehow?! Returning false!");
-    return false;
-  }
   
   var mergeGrab = quoteGrab || comGrab;
 
-  if (!mergeGrab){
-    return false;
-  }
+  if (!mergeGrab) return false;
   
   if (typeof(mergeGrab) == "string"){
     if (mergeGrab.startsWith("@")) mergeGrab = getKeyValue(messageList,mergeGrab.substr(1));
@@ -196,13 +187,14 @@ client.on('message', msg => {
     return true;
   }
 
-  if (typeof(mergeGrab == "function")){
+  if (typeof(mergeGrab) == "function"){
     mergeGrab(msg);
     return true;
   }
 
+  console.log("WARNING: mergeGrab is neither string nor function!\nObjects are NOT supported yet! (possible parameters for commands in the future)")
+  return false;
+
 });
 
 client.login(DISCORD_TOKEN);
-
- 
