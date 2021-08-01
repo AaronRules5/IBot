@@ -17,10 +17,9 @@ Have fun!
   client.on("ready", () => {
   client.user.setUsername("IsabelleBot");
   console.log(`Logged in as ${client.user.tag}!`);
-  getChannelFromName(defaultBotChannel).send("I am online.");
+  //getChannelFromName(defaultBotChannel).send("I am online.");
   });
 
-var welcomeMessage = 
   client.on("guildMemberAdd", member => {
     if (member.user == client.user) return true;
 
