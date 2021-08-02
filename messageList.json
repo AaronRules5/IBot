@@ -1,23 +1,24 @@
 {
   "!quotes!" : {
-      "0"                     : "@help",
-      "invite"                : "https://discord.gg/KG39sSM6CZ",
-      "OwO whats dis?"        : "cancer. Thats what you are.",
-      "Dad can I"             : "go ask your mother",
+      "0"                              : "@help",
+      "invite"                		     : "https://discord.gg/KG39sSM6CZ",
+      "OwO whats dis?"        		     : "cancer. Thats what you are.",
+      "Dad can I"             		     : "go ask your mother",
   
-      "hi"                    : "y̪͟ó̪̭̬u͈͇͔͙̜͈̤̻͚̗r̗e͇̹̱̦̯͟ͅ ͔a̭͇͕͠ͅl̜̪̩l̙̫̥ ̱̘̞͇͘g͓̘͖oi̱͠n̵̻͇͔͕̠̰̠g͙͓̞̜̰ͅ ̙͝to͉͈͓̕ ̟͉d̨͖̠̼̗̹͙͖i̯̩e̞͠!̥͍͈",
+      "hi"                    	   	   : "y̪͟ó̪̭̬u͈͇͔͙̜͈̤̻͚̗r̗e͇̹̱̦̯͟ͅ ͔a̭͇͕͠ͅl̜̪̩l̙̫̥ ̱̘̞͇͘g͓̘͖oi̱͠n̵̻͇͔͕̠̰̠g͙͓̞̜̰ͅ ̙͝to͉͈͓̕ ̟͉d̨͖̠̼̗̹͙͖i̯̩e̞͠!̥͍͈",
   
-      "xD"                    : "Y̧̩͍͚̤o̶͖̘̥͖̟̪ͅuṟ̦͢ẹ ́f͈͇͖u̟c̶̰̼̜̞k̺̼͇͇͠ị̣̲̻̠́ṋ̫͉̜̱͓͙g̥ ̯̙͇̹̟̼c̗̥̦͓͍̦͎a͉̹̝̼̳n̮c̞̼͍er̘͉̰̬͔",
+      "xD"                    		     : "Y̧̩͍͚̤o̶͖̘̥͖̟̪ͅuṟ̦͢ẹ ́f͈͇͖u̟c̶̰̼̜̞k̺̼͇͇͠ị̣̲̻̠́ṋ̫͉̜̱͓͙g̥ ̯̙͇̹̟̼c̗̥̦͓͍̦͎a͉̹̝̼̳n̮c̞̼͍er̘͉̰̬͔",
   
-      "ayy"                   : "LMAO",
-      "FML"                   : "I know how you feel. I too wish I could die.",
-      "Good girl"             : "`*Meows*`",
-      "test"                  : "I am online.",
-      "Who's the admin?"      : "Tarrabyte, Tarra Sama. He's really nice to most people. Be nice to him and he'll be nice to you! You can ask him anything you want! He doesn't mind!",
-      "Issy, what are you?"   : "Tarra's horny little slut ♥",
-      "Issy is a thot"        : "Tarra's thot ♥",
-      "Isabelle needs a bath" : "function(msg){uploadFile(msg,'./isabelle/isabelle shocked.png', ';_; no bath for yello dog!')}",
-      "surprised"             : "function(msg){uploadFile(msg,'./isabelle/isabelle shocked.png')}"
+      "ayy"                            : "LMAO",
+      "FML"                   		     : "I know how you feel. I too wish I could die.",
+      "Good girl"             		     : "`*Meows*`",
+      "test"                  		     : "I am online.",
+      "Who's the admin?"      		     : "Tarrabyte, Tarra Sama. He's really nice to most people. Be nice to him and he'll be nice to you! You can ask him anything you want! He doesn't mind!",
+      "Issy, what are you?"   		     : "Tarra's horny little slut ♥",
+      "Issy is a thot"        		     : "Tarra's thot ♥",
+      "Isabelle needs a bath" 		     : "function(msg){uploadFile(msg,'./isabelle/isabelle shocked.png', ';_; no bath for yello dog!')}",
+      "surprised"             		     : "function(msg){uploadFile(msg,'./isabelle/isabelle shocked.png')}",
+      "<:upsetiss:870517635555659856>" : "function(msg){uploadFile(msg,'./DDLC/puke.png')}"
     }, 
   
     "!commands!"          : {

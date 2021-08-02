@@ -5,8 +5,8 @@
  const client = new Discord.Client();
  const fs = require('fs');
 
- var defaultGuildID = "814199893035188314";
- var defaultBotChannelID = "846486956024135691";
+ var defaultGuildID = "870370270551105556";
+ var defaultBotChannelID = "870918616764268595";
  var DISCORD_TOKEN = "";
  var prefix = ">";
 
@@ -162,10 +162,6 @@ function dumpMessageList(){
    return null;
  }
 
-// This is probably a bad idea but I want to RETURN the newly shifted array, not the value I shifted out.
-// I also want to shift more than once.
-// I also want it to be a member function so... Cry about it.
-
  Array.prototype.shiftFor = function(num){
    var newObj = this;
    for (var i = 0; i < num; i++){
@@ -201,7 +197,7 @@ function dumpMessageList(){
     return false;
   }
 
-  //HARDCODED commands with parameters! Use wisely!
+  //HARDCODED commands with parameters!!! Use wisely!
   if (msg.content.startsWith(prefix)){
     var comParams = splitCommandQuotes(msg.content);
     switch (comParams[0].substr(1)){
