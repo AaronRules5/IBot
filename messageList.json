@@ -1,6 +1,5 @@
 {
   "!quotes!" : {
-"say-my-name" : "function(msg){msg.reply('my name is ' + client.user.username)}",
       "0"                     : "@help",
       "invite"                : "https://discord.gg/KG39sSM6CZ",
       "OwO whats dis?"        : "cancer. Thats what you are.",
