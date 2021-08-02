@@ -57,7 +57,6 @@
     msg.channel.send("Ask Tarra to set it. You don't have the permission!");
     return false;
   }
-  
   client.user.setGame(msg.content.split(" ").shiftFor(1).join(" "));
  }
 
@@ -88,8 +87,6 @@
   return true;
 }
 
- readMessageList();
-
  function addToMessageList(key,value){
 
    var keyType = "!quotes!";
@@ -112,11 +109,17 @@
      console.log("ERROR! Could not set messageList " + keyType + " with key: \"" + newKey + "\" and value: \"" + value + "\"!");
      return false;
    }
-
+   
+  try{
   var fileData = fs.readFileSync("./messageList.json").toString();
   var indexOfEdits = fileData.indexOf("\n",fileData.indexOf(keyType)) + 1;
   var editString = fileData.substr(0,indexOfEdits) + "\"" + newKey + "\" : \"" + value + "\",\n" + fileData.substr(indexOfEdits);
   fs.writeFileSync("./messageList.json",editString);
+  }
+  catch(e){
+    console.log("WARNING: Could not read/write to messageList.json! New command is not saved to disk!");
+    return true;
+  }
 
   console.log("Successfully added command and updated messageList.json!");
   return true;
@@ -188,6 +191,8 @@ function dumpMessageList(){
    }
    return retArray;
  }
+
+ readMessageList();
 
  client.on('message', msg => {
   if((msg.guild.id != defaultGuildID) && (typeof(msg.channel) != Discord.DMChannel)){
@@ -263,7 +268,9 @@ function dumpMessageList(){
   
   var mergeGrab = quoGrab || comGrab;
 
-  if (!mergeGrab) return false;
+  if (!mergeGrab) {
+    return false;
+  }
   
   if (typeof(mergeGrab) == "string"){
     if (mergeGrab.startsWith("@")) mergeGrab = getKeyValue(messageList,mergeGrab.substr(1));
