@@ -21,7 +21,7 @@
  ];
 
  function sendMessageToChannelID(channelID,msg){
-  return client.channels.fetch(channelID).then(channel => channel.send(msg));
+  //return client.channels.fetch(channelID).then(channel => channel.send(msg));
  }
 
  client.on("ready", () => {
@@ -61,6 +61,22 @@
  }
 
  var messageList;
+
+ function getStringBetweenDelims(string,delim,num){
+  var firstIndex = 0;
+  var secondIndex = 0;
+
+  firstIndex = string.indexOf(delim,0) + delim.length;
+  secondIndex = string.indexOf(delim,firstIndex);
+
+  for (var i = 0; i < num-1; i++){
+    firstIndex = secondIndex + delim.length;
+    secondIndex = string.indexOf(delim,firstIndex);
+  }
+
+  return string.substr(firstIndex,(secondIndex == -1 ? undefined : secondIndex-firstIndex));
+
+ }
 
  function readMessageList(){
   var fileData = fs.readFileSync("./messageList.json").toString();
@@ -151,6 +167,7 @@ function dumpMessageList(){
      delete messageList["!commands!"][x];
    }
  }
+ 
 //This getKeyValue function I made is a straight up MIRACLE...
 //AND it should work if parameters are ever added to commands!!! :D
  function getKeyValue(object,key){
