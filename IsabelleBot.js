@@ -209,7 +209,7 @@ function dumpMessageList(){
     return false;
   }
 
-  if(!(msg.guild && msg.guild.id == defaultGuildID) && (msg.channel.type != "dm")){
+  if(!msg.guild || (msg.guild.id != defaultGuildID) || (msg.channel.type != "dm")){
     return false;
   }
 
