@@ -142,6 +142,8 @@ function dumpMessageList(){
   return true;
 }
 
+ readMessageList();
+
  for (x in messageList["!commands!"]){
    if(messageList["!commands!"].hasOwnProperty(x) && x.indexOf(" ") != -1){
      console.log("WARNING: messageList contains a command with a space: \"" + x + "\"! Automatically moving to quotes list!\n This edit will NOT be made to the messageList.json!");
@@ -201,13 +203,13 @@ function dumpMessageList(){
    return retArray;
  }
 
- readMessageList();
-
  client.on('message', msg => {
-  if((msg.guild.id != defaultGuildID) && (typeof(msg.channel) != Discord.DMChannel)){
+
+  if (msg.author == client.user){
     return false;
   }
-  if (msg.author == client.user){
+
+  if(!(msg.guild && msg.guild.id == defaultGuildID) && (msg.channel.type != "dm")){
     return false;
   }
 
