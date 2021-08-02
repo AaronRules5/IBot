@@ -122,6 +122,11 @@
   return true;
 }
 
+function deleteCommand(comName){
+  console.log("Command deletion is not done yet!")
+  return false;
+}
+
 function dumpMessageList(){
   try {
   var fileData = Buffer.from(JSON.stringify(messageList),"utf8");
@@ -219,7 +224,7 @@ function dumpMessageList(){
           return false;
         }
         if (!readMessageList()){
-          msg.reply("Could not reload messageList! Use >dumpcom to dump my internal messageList as a last resort!");
+          msg.reply("Could not reload messageList! Use >dumpcom in the event messageList.json got corrupted!");
           return false;
         }
         msg.reply("Successfully reloaded the messageList!");
@@ -252,11 +257,6 @@ function dumpMessageList(){
         return true;
         break;
     }
- }
-
- function deleteCommand(comName){
-   console.log("Command deletion not ready yet.")
-   return false;
  }
 
   var quoGrab = getKeyValue(messageList["!quotes!"],msg.content);
