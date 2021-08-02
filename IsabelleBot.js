@@ -182,6 +182,8 @@ function dumpMessageList(){
        retArray.push(strArray[i]);
      }
    }
+
+   //Quick hacky solutions.
    if (retArray.length == 1){
      var parts = retArray.toString().split(" ");
      retArray = [];
@@ -189,13 +191,13 @@ function dumpMessageList(){
      retArray.push(parts[1]);
      retArray.push(parts.shiftFor(2).join(" "))
    }
-   //Quick hacky solution
    if (retArray.length == 2){
     var firstPart = retArray[0].split(" ");
     retArray.shift();
     retArray.unshift(firstPart[1]);
     retArray.unshift(firstPart[0]);
   }
+
    return retArray;
  }
 
