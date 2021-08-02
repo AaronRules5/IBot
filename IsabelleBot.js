@@ -285,6 +285,10 @@ function dumpMessageList(){
         msg.reply("Dumped internal messageList to dump.json!\nWARNING: Everything is on a single line! Use a tool like https://jsonformatter.org/jsbeautifier");
         return true;
         break;
+      case "aaron":
+        msg.reply("Ohoho! Secret hardcoded command!");
+        return true;
+        break;
     }
  }
 
