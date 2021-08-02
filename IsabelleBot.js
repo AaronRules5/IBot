@@ -167,7 +167,7 @@ function dumpMessageList(){
      delete messageList["!commands!"][x];
    }
  }
- 
+
 //This getKeyValue function I made is a straight up MIRACLE...
 //AND it should work if parameters are ever added to commands!!! :D
  function getKeyValue(object,key){
@@ -226,7 +226,7 @@ function dumpMessageList(){
     return false;
   }
 
-  if(!msg.guild || (msg.guild.id != defaultGuildID) || (msg.channel.type != "dm")){
+  if((msg.channel.type != "dm") || (!msg.guild) || (msg.guild.id != defaultGuildID)){
     return false;
   }
 
