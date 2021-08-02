@@ -1,13 +1,13 @@
-/*
-This discord bot was first conceptualized by Tarrabyte and
-was cleaned up by AaronRules5!
-Have fun with it!
-*/
+
+// This discord bot was first conceptualized by Tarrabyte and was edited by AaronRules5!
+
  const Discord = require("discord.js");
  const client = new Discord.Client();
- //var defaultGuildID = "870370270551105556"; //Furville Mall. Guild ID not required for now.
+ const fs = require('fs');
+
+ var defaultGuildID = "870370270551105556";
  var defaultBotChannelID = "870918616764268595";
- var DISCORD_TOKEN = "you put it in! not me! :3";
+ var DISCORD_TOKEN = "";
  var prefix = ">";
 
  if (prefix.length != 1){
@@ -15,184 +15,233 @@ Have fun with it!
    process.exit(1);
  }
 
+ var creatorIDs = [
+  "90814302981754880", //Tarra
+  "305454678316154900" //Aaron >:D
+ ];
+
  function sendMessageToChannelID(channelID,msg){
   return client.channels.fetch(channelID).then(channel => channel.send(msg));
  }
- 
-client.on("ready", () => {
-  client.user.setUsername("IsabelleBot");
-  console.log(`Logged in as ${client.user.tag}!`);
-  sendMessageToChannelID(defaultBotChannelID,"I am online.");
-});
 
-  client.on("guildMemberAdd", member => {
-    if (member.user == client.user) return true;
-    member.createDM(true).then(newDM => {
-    newDM.send("**__Welcome " + member.user.username + "!__** \n```FIX\nYou have entered Furville Mall! What is this place? It's a furry creator mall of sorts! Do you create art? Fursuits? Paws? Tails?Ears? feet? Anything of that nature is welcome here! We will try to help you sell! Ask how! You are welcome to talk about things in #Just-A-chat to others. Please make sure to read the #rules, the #readme is optional, but helpful. A small reminder to mute the channels you don't wish to use. For a list of commands please type >help and I will assist you with what I can!```\n \nTo get started type in **>getting-started** to get the help you need here!");
-  });
-});
+ client.on("ready", () => {
+   client.user.setUsername("IsabelleBot");
+   console.log(`Logged in as ${client.user.tag}!`);
+   sendMessageToChannelID(defaultBotChannelID, "I have been activated!");
+ });
+
+ client.on("guildMemberAdd", member => {
+   if (member.user == client.user) return true;
+   member.createDM(true).then(newDM => {
+   newDM.send("**__Welcome " + member.user.username + "!__** \n```FIX\nYou have entered Furville Mall! What is this place? It's a furry creator mall of sorts! Do you create art? Fursuits? Paws? Tails?Ears? feet? Anything of that nature is welcome here! We will try to help you sell! Ask how! You are welcome to talk about things in #Just-A-chat to others. Please make sure to read the #rules, the #readme is optional, but helpful. A small reminder to mute the channels you don't wish to use. For a list of commands please type >help and I will assist you with what I can!```\n \nTo get started type in **>getting-started** to get the help you need here!");
+   });
+ });
+
+
+ function hasCreatorID(id){
+   for (var i = 0; i < creatorIDs.length; i++){
+     if (id == creatorIDs[i]) return true;
+   }
+   return false;
+ }
  
  function uploadFile(msg,path,string){
    if (!string) string = "";
      msg.reply(string,{files:[path]}).then(value=>{return value},reason=>{
        console.log("Warning! File not found! \"" + path + "\"!")
      });
-}
+ }
 
  function changeStatus(msg){
-  if (msg.author.id != "90814302981754880"){
+  if (!hasCreatorID(msg.author.id)){
     msg.channel.send("Ask Tarra to set it. You don't have the permission!");
     return false;
   }
   
-  client.user.setGame(msg.content.split(" ")[1]);
-}
+  client.user.setGame(msg.content.split(" ").shiftFor(1).join(" "));
+ }
 
-/*
- The name of the command, and the message sent by the bot are in "key" : "value" pairs.
+ var messageList;
 
- The "key" being the command name, and the "value" being the message the bot replies with.
- For example...
+ function readMessageList(){
+  var fileData = fs.readFileSync("./messageList.json").toString();
 
- "ping" : "Pong!",
-
- "ping" is the key... (the command name)
- "Pong!" is the value... (the reply)
-
- You can also have a FUNCTION be the value instead of just a normal reply, and the function will be called instead!
- The function will be called with the original message as the parameter.
-
- Setting values to functions is especially useful when trying to do complicated things such as uploading files!
- Example: "surprised" : function(msg){uploadFile(msg,"./isabelle/isabelle shocked.png")},
-
- Quotes and commands are pretty much the same thing except commands CANNOT have spaces, and they MUST start with a ">" or whatever the prefix variable is set to.
- This is done in case parameters are added to commands in the future...
-
- Oh also in a value you can do "@" and an existing key name to copy a value from that key name.
-
- Please be aware that quotes take "@" priority over commands.
- This means that if you have a quote and a command of the SAME NAME and want them to do the SAME THING
- Then the command should always link to the quote, not the other way around.
-*/
- var messageList = {
-  
-  "quotes" : {
-    "0"                     : "@help",
-    "invite"                : "https://discord.gg/KG39sSM6CZ",
-    "OwO whats dis?"        : "cancer. Thats what you are.",
-    "Dad can I"             : "go ask your mother",
-
-    "hi"                    : "y̪͟ó̪̭̬u͈͇͔͙̜͈̤̻͚̗r̗e͇̹̱̦̯͟ͅ ͔a̭͇͕͠ͅl̜̪̩l̙̫̥ ̱̘̞͇͘g͓̘͖oi̱͠n̵̻͇͔͕̠̰̠g͙͓̞̜̰ͅ ̙͝to͉͈͓̕ ̟͉d̨͖̠̼̗̹͙͖i̯̩e̞͠!̥͍͈",
-
-    "xD"                    : "Y̧̩͍͚̤o̶͖̘̥͖̟̪ͅuṟ̦͢ẹ ́f͈͇͖u̟c̶̰̼̜̞k̺̼͇͇͠ị̣̲̻̠́ṋ̫͉̜̱͓͙g̥ ̯̙͇̹̟̼c̗̥̦͓͍̦͎a͉̹̝̼̳n̮c̞̼͍er̘͉̰̬͔",
-
-    "ayy"                   : "LMAO",
-    "FML"                   : "I know how you feel. I too wish I could die.",
-    "Good girl"             : "`*Meows*`",
-    "test"                  : "I am online.",
-    "Who's the admin?"      : "Tarrabyte, Tarra Sama. He's really nice to most people. Be nice to him and he'll be nice to you! You can ask him anything you want! He doesn't mind!",
-    "Issy, what are you?"   : "Tarra's horny little slut ♥",
-    "Issy is a thot"        : "Tarra's thot ♥",
-    "Isabelle needs a bath" : function(msg){uploadFile(msg,"./isabelle/isabelle shocked.png", ";_; no bath for yello dog!")},
-    "surprised"             : function(msg){uploadFile(msg,"./isabelle/isabelle shocked.png")},
-  }, 
-
-  "commands"          : {
-    "invite"          : "@invite",
-    "ping"            : "Pong!",
-    "what-is-discord" : "**__What is Discordapp?__** \n Discord app is a client that allows you to talk to a lot of different users at once. It allows you to communicate with several different people at once. Ever been on an IRC chat? AIM? AOL or Compuserve chat rooms? Or even Skype. Think that. It's alot easier. Anyone can set up a server, set it's region, and so forth.\n **__Why should you use Discord over?__** \n Discordapp is based on servers. You could be in the middle of the desert or the ocean and still be able to talk to the server you're in as long as you have a stable connection to that sattelite! \n Discordapp was originally meant for gamers all over for PC but it turned into more. It turned into people using it as the new chatroom method, making friendships and making their own personal groups! Discord has so many different uses. I suggest checking out discord.me for more groups! Even asking people in other servers what they think!",
-    "ibot"            : "My name is Isabelle. My initial creator is Tarrabyte, and I was edited by AaronRules5. I was created as a welcome bot, but my functions may go beyond that in the future. Lets see what all I do!",
-    "isabellbot"      : "@ibot",
-    "isabellebot"     : "@ibot",
-    "help"            : "**__If you want to use a command, use > then use coms. The commands don't have spellcheck so make sure to get them right.__**",
-    "tags"            : "**__Tags for Isabelle__**\n Ask a @mod to make you to tag you! Curret tags are @furries @creator @artist that you can pick up!",
-    "getting-started" : "**__So you wanna sell here eh?__**\n So you've come here to ask for a space in the server? That's cool! Our goal here with this server is to help people find work, make some extra money even trade if they wish! \n To get a Category and channels of your own, please show to the admins that you have at least 1 website that you host your content too. This can be any social media, Etsy, or directly! \n",
-    "coms"            : "**__Commands!__** \n __Commands can be used by using the `>` and then any of the known commands.__ \n Isabelle-swag \n invite`*` \n help \n tags \n what-is-discord \n ping \n coms (commands) \n hi \n Dad can I \n w - Welcome \n xD`*` \n DDLC \n MHA - My Hero Acadamia \n lc - lewd images \n nintendo \n OwO whats dis?`*` getting-started \n",
-    "nintendo"        : "**__Nintendo Commands__** \n adding-player \n",
-    "isabelle-swag"   : "**_Isabelle Commands__** \n These are a lost of commands that you can use on me, _Isabelle.  \n _Isabelle\n tea \n _Isabelle, what are you?",
-    "MHA"             : "**__My Hero Acadamia Commands__** \n deku1 \n",
-    "aaron"           : "Ohoho! Secret command!",
-    "naughty"         : "**__Naughty commands__** \n  tits \n boobies \n black-cock \n pussy \n ass \n",
-    "lc"              : "\n **__Lewds__** \nLewd \n naughty",
-    "implying"        : " ```css\n >FAGGOT!```",
-    "DDLC"            : "**__Doki Doki literature Club Commands__** \n natsuki \n yuri \n monika \n sayori \n puke \n ",
-    "w"               : " **__Welcome!__** \n```FIX\nYou have entered Furville Mall! What is this place? It's a furry creator mall of sorts! Do you create art? Fursuits? Paws? Tails?Ears? feet? Anything of that nature is welcome here!You are welcome to talk about things in #Just-A-chat to others. Please make sure to read the #rules, the #readme is optional, but helpful. A small reminder to mute the channels you don't wish to use. For a list of commands please type >help and I will assist you with what I can!\n``` \nTo get started type in **>getting started** to get the help you need here!",
-    "adding-player"   : "**__How to add a person to the Nintendo Switch__** \n \n1. Goto the icon at the top left corner of your Switch's home screen. Here you will see where all your user main info. **Profile, Friend List, Friend Suggestions, Add friends, User settings**. \n \n1b. By clicking on your profile, you will your username which is editable, your current game, whether or your online or not,  your **friend code** and then your list of games you've played \n\n2. Click the **Add Friend** function, this will will allow you to type in another person's friend code as well.\nFor any other help, please ask in the Nintendo chat.",
-    "getping"         : function(msg){msg.reply(`Latency is ${Date.now() - msg.createdTimestamp}ms. API Latency is ${Math.round(client.ws.ping)}ms`)},
-    "monika"          : function(msg){uploadFile(msg,"./DDLC/monika.jpg")},
-    "sayori"          : function(msg){uploadFile(msg,"./DDLC/sayori_death.jpg")},
-    "yuri"            : function(msg){uploadFile(msg,"./DDLC/yuri_death.png")},
-    "natsuki"         : function(msg){uploadFile(msg,"./DDLC/natsuki.png")},
-    "puke"            : function(msg){uploadFile(msg,"./DDLC/puke.png")},
-    "deku1"           : function(msg){uploadFile(msg,"./mha/deku_excite.gif")},
-    "tea"             : function(msg){uploadFile(msg,"./AIW/tea_time.jpg")},
-    "lewd"            : function(msg){uploadFile(msg,"./lewd/lewd.jpg")},
-    "tits"            : function(msg){uploadFile(msg,"./naughty/tits.jpg")},
-    "boobies"         : function(msg){uploadFile(msg,"./naughty/boobies.jpg")},
-    "ass"             : function(msg){uploadFile(msg,"./naughty/ass.jpg")},
-    "pussy"           : function(msg){uploadFile(msg,"./naughty/pussy.jpg")},
-    "faggotree"       : function(msg){uploadFile(msg,"./naughty/faggot_tree.jpg")},
-    "black-cock"      : function(msg){uploadFile(msg,"./naughty/black cock.jpg")},
-    "1"               : function(msg){uploadFile(msg,"./1/go away 1.gif")},
-    "status"          : function(msg){changeStatus(msg)},
-  },
-}
-
-//I changed this because I don't trust for in loops.
-var comNameList = Object.keys(messageList["commands"]);
-for (var i = 0; i < comNameList.length; i++){
-  var x = comNameList[i];
-  if(messageList.hasOwnProperty(x) && x.indexOf(" ") != -1){
-    console.log("WARNING: messageList commands contains a command key with a space: \"" + x + "\"! Automatically moving to quotes list!");
-    messageList["quotes"][x] = messageList["commands"][x];
-    delete messageList["commands"][x];
+  if (!fileData){
+    console.log("ERROR: Could not read messageList.json! Exiting...");
+    process.exit(1);
   }
+
+  try{
+    messageList = JSON.parse(fileData);
+  }
+  catch(e){
+    console.log("Could not successfully parse messageList file contents into a JSON! Exiting...");
+    process.exit(1);
+  }
+
+  if (typeof(messageList) != "object"){
+    console.log("ERROR: messageList is not of type object... somehow! Exiting...");
+    process.exit(1);
+  }
+
+  console.log("Successfully loaded messageList.json!");
+  return true;
 }
+
+ readMessageList();
+
+ function addToMessageList(key,value){
+
+   var keyType = "!quotes!";
+   var newKey = key;
+
+   if (key.startsWith(prefix)){
+     keyType = "!commands!";
+     newKey = key.substr(1);
+   }
+
+   try{
+     messageList[keyType][newKey] = value;
+   }
+   catch(e){
+     console.log("ERROR! Could not set messageList " + keyType + " with key: \"" + newKey + "\" and value: \"" + value + "\"!");
+     return false;
+   }
+
+  var fileData = fs.readFileSync("./messageList.json").toString();
+  var indexOfEdits = fileData.indexOf("\n",fileData.indexOf(keyType)) + 1;
+  var editString = fileData.substr(0,indexOfEdits) + "\"" + newKey + "\" : \"" + value + "\",\n" + fileData.substr(indexOfEdits);
+  fs.writeFileSync("./messageList.json",editString);
+
+  console.log("Successfully added command and updated messageList.json!");
+  return true;
+}
+
+function dumpMessageList(){
+  try {
+  var fileData = Buffer.from(JSON.stringify(messageList),"utf8");
+  fs.writeFileSync("./dump.json",fileData);
+  }
+  catch(e){
+    console.log("ERROR! Could not dump internal messageList!!!");
+    return false;
+  }
+  return true;
+}
+
+//I changed this because I don't trust "for in" loops.
+ var comNameList = Object.keys(messageList["!commands!"]);
+ for (var i = 0; i < comNameList.length; i++){
+   var x = comNameList[i];
+   if(messageList.hasOwnProperty(x) && x.indexOf(" ") != -1){
+     console.log("WARNING: messageList commands contains a command key with a space: \"" + x + "\"! Automatically moving to quotes list!");
+     messageList["!quotes!"][x] = messageList["!commands!"][x];
+     delete messageList["!commands!"][x];
+   }
+ }
 
 //This getKeyValue function I made is a straight up MIRACLE...
 //AND it should work if parameters are ever added to commands!!! :D
-function getKeyValue(object,key){
-  var objectKeys = Object.keys(object);
-  for (var i = 0; i < objectKeys.length; i++){
-    if (objectKeys[i].toLowerCase() == key.toLowerCase()){
-      return object[objectKeys[i]];
-    }
-    if (typeof(object[objectKeys[i]]) == "object"){
-      var result = getKeyValue(object[objectKeys[i]],key);
-      if (result != null) return result;
-    }
+ function getKeyValue(object,key){
+   var objectKeys = Object.keys(object);
+   for (var i = 0; i < objectKeys.length; i++){
+     if (objectKeys[i].toLowerCase() == key.toLowerCase()){
+       return object[objectKeys[i]];
+     }
+     if (typeof(object[objectKeys[i]]) == "object"){
+       var result = getKeyValue(object[objectKeys[i]],key);
+       if (result != null) return result;
+     }
+   }
+   return null;
+ }
+
+// This is probably a bad idea but I want to RETURN the newly shifted array, not the value I shifted out.
+// I also want to shift more than once.
+// I also want it to be a member function so... Cry about it.
+
+ Array.prototype.shiftFor = function(num){
+   var newObj = this;
+   for (var i = 0; i < num; i++){
+     newObj.shift();
+   }
+   return newObj;
+ }
+
+
+
+ client.on('message', msg => {
+  if((msg.guild.id != defaultGuildID) && (typeof(msg.channel) != Discord.DMChannel)){
+    return false;
   }
-  return null;
-}
-
-client.on('message', msg => {
-
   if (msg.author == client.user){
     return false;
   }
+  //HARDCODED commands! Use wisely!
+  if (msg.content.startsWith(prefix)){
+    switch (msg.content.substr(1).split(" ")[0]){
+      case "addcom":
+        if (!hasCreatorID(msg.author.id)){
+          msg.reply("You do not have permission to add commands!");
+          return false;
+        }
+        if(!addToMessageList(msg.content.split(" ")[1],msg.content.split(" ").shiftFor(2).join(" "))){
+          msg.reply("Could not add command!");
+          return false;
+        }
+        msg.reply("Successfully added command!");
+        return true;
+        break;
 
-  var quoteGrab = getKeyValue(messageList["quotes"],msg.content);
+      case "reloadcom":
+        if (!hasCreatorID(msg.author.id)){
+          msg.reply("You do not have permission to reload the messageList.js file!");
+          return false;
+        }
+        if (!readMessageList()){
+          msg.reply("Could not reload messageList! Use >dumpcom to dump my internal messageList as a last resort!");
+          return false;
+        }
+        msg.reply("Successfully reloaded the messageList!");
+        return true;
+        break;
+
+      case "dumpcom":
+        if (!hasCreatorID(msg.author.id)){
+          msg.reply("You do not have permission to dump the internal messageList!");
+          return false;
+        }
+        if (!dumpMessageList()){
+          msg.reply("Could not dump the internal messageList!");
+          return false;
+        }
+        return true;
+        break;
+    }
+ }
+
+  var quoGrab = getKeyValue(messageList["!quotes!"],msg.content);
 
   if (msg.content.startsWith(prefix)){
-    var comGrab = getKeyValue(messageList["commands"],msg.content.substr(1).split(" ")[0])
+    var comGrab = getKeyValue(messageList["!commands!"],msg.content.substr(1).split(" ")[0])
   }
   
-  var mergeGrab = quoteGrab || comGrab;
+  var mergeGrab = quoGrab || comGrab;
 
   if (!mergeGrab) return false;
   
   if (typeof(mergeGrab) == "string"){
     if (mergeGrab.startsWith("@")) mergeGrab = getKeyValue(messageList,mergeGrab.substr(1));
+    if (mergeGrab.startsWith("function")){
+      eval("var newFunc = " + mergeGrab);
+      newFunc(msg);
+      return true;
+    }
     msg.reply(mergeGrab);
     return true;
   }
 
-  if (typeof(mergeGrab) == "function"){
-    mergeGrab(msg);
-    return true;
-  }
-
-  console.log("WARNING: mergeGrab is neither string nor function!\nObjects are NOT supported yet! (possible parameters for commands in the future)")
+  console.log("WARNING: mergeGrab is not a string! Objects are NOT supported yet! (possible parameters for commands in the future)")
   return false;
 
 });
