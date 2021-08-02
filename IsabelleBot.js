@@ -5,8 +5,8 @@
  const client = new Discord.Client();
  const fs = require('fs');
 
- var defaultGuildID = "870370270551105556";
- var defaultBotChannelID = "870918616764268595";
+ var defaultGuildID = "814199893035188314";
+ var defaultBotChannelID = "846486956024135691";
  var DISCORD_TOKEN = "";
  var prefix = ">";
 
@@ -100,6 +100,11 @@
      newKey = key.substr(1);
    }
 
+   if (key.indexOf(" ") != -1 && keyType == "!commands!"){
+     console.log("Error! Command cannot have spaces in name!");
+     return false;
+   }
+
    try{
      messageList[keyType][newKey] = value;
    }
@@ -129,17 +134,13 @@ function dumpMessageList(){
   return true;
 }
 
-//I changed this because I don't trust "for in" loops.
- var comNameList = Object.keys(messageList["!commands!"]);
- for (var i = 0; i < comNameList.length; i++){
-   var x = comNameList[i];
-   if(messageList.hasOwnProperty(x) && x.indexOf(" ") != -1){
-     console.log("WARNING: messageList commands contains a command key with a space: \"" + x + "\"! Automatically moving to quotes list!");
+ for (x in messageList["!commands!"]){
+   if(messageList["!commands!"].hasOwnProperty(x) && x.indexOf(" ") != -1){
+     console.log("WARNING: messageList contains a command with a space: \"" + x + "\"! Automatically moving to quotes list!\n This edit will NOT be made to the messageList.json!");
      messageList["!quotes!"][x] = messageList["!commands!"][x];
      delete messageList["!commands!"][x];
    }
  }
-
 //This getKeyValue function I made is a straight up MIRACLE...
 //AND it should work if parameters are ever added to commands!!! :D
  function getKeyValue(object,key){
@@ -168,7 +169,24 @@ function dumpMessageList(){
    return newObj;
  }
 
-
+ function splitCommandQuotes(string){
+   var retArray = [];
+   var strArray = string.split("\"");
+   for (var i = 0; i < strArray.length; i++){
+     strArray[i] = strArray[i].trim();
+     if (strArray[i]){
+       retArray.push(strArray[i]);
+     }
+   }
+   if (retArray.length == 1){
+     var parts = retArray.toString().split(" ");
+     retArray = [];
+     retArray.push(parts[0]);
+     retArray.push(parts[1]);
+     retArray.push(parts.shiftFor(2).join(" "))
+   }
+   return retArray;
+ }
 
  client.on('message', msg => {
   if((msg.guild.id != defaultGuildID) && (typeof(msg.channel) != Discord.DMChannel)){
@@ -177,15 +195,17 @@ function dumpMessageList(){
   if (msg.author == client.user){
     return false;
   }
-  //HARDCODED commands! Use wisely!
+
+  //HARDCODED commands with parameters! Use wisely!
   if (msg.content.startsWith(prefix)){
-    switch (msg.content.substr(1).split(" ")[0]){
+    var comParams = splitCommandQuotes(msg.content);
+    switch (comParams[0].substr(1)){
       case "addcom":
         if (!hasCreatorID(msg.author.id)){
           msg.reply("You do not have permission to add commands!");
           return false;
         }
-        if(!addToMessageList(msg.content.split(" ")[1],msg.content.split(" ").shiftFor(2).join(" "))){
+        if(!addToMessageList(comParams[1],comParams[2])){
           msg.reply("Could not add command!");
           return false;
         }
@@ -206,6 +226,19 @@ function dumpMessageList(){
         return true;
         break;
 
+      case "delcom":
+        if (!hasCreatorID(msg.author.id)){
+          msg.reply("You do not have permission to delete a command!");
+          return false;
+        }
+        if (!deleteCommand(comParams[1])){
+          msg.reply("Could not delete command! They are not done yet!");
+          return false;
+        }
+        msg.reply("Successfully deleted command!");
+        return true;
+        break;
+
       case "dumpcom":
         if (!hasCreatorID(msg.author.id)){
           msg.reply("You do not have permission to dump the internal messageList!");
@@ -215,9 +248,15 @@ function dumpMessageList(){
           msg.reply("Could not dump the internal messageList!");
           return false;
         }
+        msg.reply("Dumped internal messageList to dump.json!\nWARNING: Everything is on a single line! Use a tool like https://jsonformatter.org/jsbeautifier");
         return true;
         break;
     }
+ }
+
+ function deleteCommand(comName){
+   console.log("Command deletion not ready yet.")
+   return false;
  }
 
   var quoGrab = getKeyValue(messageList["!quotes!"],msg.content);
