@@ -194,6 +194,7 @@ function dumpMessageList(){
     var firstPart = retArray[0].split(" ");
     retArray.shift();
     retArray.unshift(firstPart[1]);
+    retArray.unshift(firstPart[0]);
   }
    return retArray;
  }
