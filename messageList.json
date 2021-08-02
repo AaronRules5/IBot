@@ -24,10 +24,10 @@
     "Issy is a bad dog"     : "\n NO U! https://tinyurl.com/3eyjy5rk ",
     ":upsetiss:"            : "\n >puke",
     "Isabelle needs a bath" : "function(msg){uploadFile(msg,'./isabelle/isabelle shocked.png', ';_; no bath for yello dog!')}",
-    "surprised"             : "function(msg){uploadFile(msg,'./isabelle/isabelle shocked.png')}",
-  }, 
+    "surprised"             : "function(msg){uploadFile(msg,'./isabelle/isabelle shocked.png')}"
+    }, 
 
-      "!commands!"      : {
+      "!commands!" : {
       "invite"          : "\n @invite",
       "ping"            : "\n Pong!",
       "what-is-discord" : "\n**__What is Discordapp?__** \n Discord app is a client that allows you to talk to a lot of different users at once. It allows you to communicate with several different people at once. Ever been on an IRC chat? AIM? AOL or Compuserve chat rooms? Or even Skype. Think that. It's alot easier. Anyone can set up a server, set it's region, and so forth.\n **__Why should you use Discord over?__** \n Discordapp is based on servers. You could be in the middle of the desert or the ocean and still be able to talk to the server you're in as long as you have a stable connection to that sattelite! \n Discordapp was originally meant for gamers all over for PC but it turned into more. It turned into people using it as the new chatroom method, making friendships and making their own personal groups! Discord has so many different uses. I suggest checking out discord.me for more groups! Even asking people in other servers what they think!",
@@ -35,9 +35,6 @@
       "help"            : "\n**__If you want to use a command, use > then use categories.__**",
       "tags"            : "\n**__Tags for Isabelle__**\n Ask a @mod to make you to tag you! Curret tags are @furries @creator @artist that you can pick up!",
       "getting-started" : "\n**__So you wanna sell here eh?__**\n So you've come here to ask for a space in the server? That's cool! Our goal here with this server is to help people find work, make some extra money even trade if they wish! \n To get a Category and channels of your own, please show to the admins that you have at least 1 website that you host your content too. This can be any social media, Etsy, or directly! \n",
-    
-      "*categories*" : "",
-
       "coms"            : "\n**__Commands!__** \n __Commands can be used by using the `>` and then any of the known commands.__ \n Isabelle-swag \n invite`*` \n help \n tags \n what-is-discord \n ping \n coms (commands) \n hi \n Dad can I \n w - Welcome \n xD`*` \n DDLC \n MHA - My Hero Acadamia \n lc - lewd images \n nintendo \n OwO whats dis?`*`getting-started \n",
       "Quotes"          : "\n**__Quotes__** \n **A quote is a command with out the prefix > \n invite \n OwO what's dis? \n OwO Whats dis? \n  OwO \n hi \n hoi \n xD \n ayy \n FML \n  good girl \n test \n who's the admin?\n ",
       "games"           : "\n**__Games__**\n Jail\n free \n",
@@ -46,27 +43,25 @@
       "ddlc"            : "\n**Doki Doki Lit Club**\n Monika\n Sayori\n Yuri\n Natsuki\n Puke\n", 
       "Nintendo"        : "\n Adding-a-player",      
       "Categories"      : "\n __**Categories**__\n Coms - Houses all the main commands\n Isabelle Swag\n Naughty\n Quotes - Things you may say or can say without the prefix\n Nintendo\n DDLC\n",
-
-    },
-
-    "ping"            : "function(msg){msg.reply(`Latency is ${Date.now() - msg.createdTimestamp}ms. API Latency is ${Math.round(client.ws.ping)}ms`)}",
-    "monika"          : "function(msg){uploadFile(msg,'./DDLC/monika.jpg')}",
-    "sayori"          : "function(msg){uploadFile(msg,'./DDLC/sayori_death.jpg')}",
-    "yuri"            : "function(msg){uploadFile(msg,'./DDLC/yuri_death.png')}",
-    "natsuki"         : "function(msg){uploadFile(msg,'./DDLC/natsuki.png')}",
-    "puke"            : "function(msg){uploadFile(msg,'./DDLC/puke.png')}",
-    "deku1"           : "function(msg){uploadFile(msg,'./mha/deku_excite.gif')}",
-    "tea"             : "function(msg){uploadFile(msg,'./AIW/tea_time.jpg')}",
-    "lewd"            : "function(msg){uploadFile(msg,'./lewd/lewd.jpg')}",
-    "tits"            : "function(msg){uploadFile(msg,'./naughty/tits.jpg')}",
-    "boobies"         : "function(msg){uploadFile(msg,'./naughty/boobies.jpg')}",
-    "ass"             : "function(msg){uploadFile(msg,'./naughty/ass.jpg')}",
-    "pussy"           : "function(msg){uploadFile(msg,'./naughty/pussy.jpg')}",
-    "faggotree"       : "function(msg){uploadFile(msg,'./naughty/faggot_tree.jpg')}",
-    "black-cock"      : "function(msg){uploadFile(msg,'./naughty/black cock.jpg')}",
-    "1"               : "function(msg){uploadFile(msg,'./1/go away 1.gif')}",
-    "jail"            : "function(msg){uploadFile(msg,'./monopoly/gtj.png')}",
-    "free"            : "function(msg){uploadFile(msg,'./monopoly/GOOJ.jpg')}",
-    "status"          : "function(msg){changeStatus(msg)}"
+      "getping"         : "function(msg){msg.reply(`Latency is ${Date.now() - msg.createdTimestamp}ms. API Latency is ${Math.round(client.ws.ping)}ms`)}",
+      "monika"          : "function(msg){uploadFile(msg,'./DDLC/monika.jpg')}",
+      "sayori"          : "function(msg){uploadFile(msg,'./DDLC/sayori_death.jpg')}",
+      "yuri"            : "function(msg){uploadFile(msg,'./DDLC/yuri_death.png')}",
+      "natsuki"         : "function(msg){uploadFile(msg,'./DDLC/natsuki.png')}",
+      "puke"            : "function(msg){uploadFile(msg,'./DDLC/puke.png')}",
+      "deku1"           : "function(msg){uploadFile(msg,'./mha/deku_excite.gif')}",
+      "tea"             : "function(msg){uploadFile(msg,'./AIW/tea_time.jpg')}",
+      "lewd"            : "function(msg){uploadFile(msg,'./lewd/lewd.jpg')}",
+      "tits"            : "function(msg){uploadFile(msg,'./naughty/tits.jpg')}",
+      "boobies"         : "function(msg){uploadFile(msg,'./naughty/boobies.jpg')}",
+      "ass"             : "function(msg){uploadFile(msg,'./naughty/ass.jpg')}",
+      "pussy"           : "function(msg){uploadFile(msg,'./naughty/pussy.jpg')}",
+      "faggotree"       : "function(msg){uploadFile(msg,'./naughty/faggot_tree.jpg')}",
+      "black-cock"      : "function(msg){uploadFile(msg,'./naughty/black cock.jpg')}",
+      "1"               : "function(msg){uploadFile(msg,'./1/go away 1.gif')}",
+      "jail"            : "function(msg){uploadFile(msg,'./monopoly/gtj.png')}",
+      "free"            : "function(msg){uploadFile(msg,'./monopoly/GOOJ.jpg')}",
+      "status"          : "function(msg){changeStatus(msg)}"
+    }
 
   }
