@@ -1,0 +1,46 @@
+1,"function(msg){uploadFile(msg,'./1/go away 1.gif')}"
+bro,<:pikapng01:870517915714207804>
+time,function(msg){var date=new Date();var hours = date.getHours();var minutes = date.getMinutes();msg.reply(hours + ':'+ minutes)}
+invite,@invite
+Quotes,**__Quotes__** \n **A quote is a command with out the prefix `>`** ```diff\n- invite \n- OwO Whats dis? \n- OwO \n- hi \n- hoi \n- xD \n- ayy \n- FML \n- good girl \n- Wait till your father hears about this \n- punish me daddy\n- test \n- who's the admin?\n``` 
+games,**__Games__**\n Jail\n free \n
+audio,**Audio clips and songs__**\n Oh Daddy\n Seinfeld\n shutup\n Pokemon Center\n Recover\n AOL
+Naughty,**__Naughty__**```yaml\n lewd\n tits\n boobies\n pussy\n faggotree\n black-cock ```\n
+Isabelle-Swag," **__Isabelle Swag__** ```fix\nTea\nIssy, whaty are you?\nGood Girl\nIssy is a bad dog\nsurprised\n```"
+ddlc,__**Doki Doki Lit Club**__\n Monika\n Sayori\n Yuri\n Natsuki\n Puke\n
+Categories, __**Categories**__\n Coms - Houses all the main commands\n Isabelle Swag\n Naughty\n Quotes - Things you may say or can say without the prefix\n Nintendo\n DDLC\n Audio\n
+ping,Pong!
+what-is-discord,"**__What is Discordapp?__** \n Discord app is a client that allows you to talk to a lot of different users at once. It allows you to communicate with several different people at once. Ever been on an IRC chat? AIM? AOL or Compuserve chat rooms? Or even Skype. Think that. It's alot easier. Anyone can set up a server, set it's region, and so forth.\n **__Why should you use Discord over?__** \n Discordapp is based on servers. You could be in the middle of the desert or the ocean and still be able to talk to the server you're in as long as you have a stable connection to that sattelite! \n Discordapp was originally meant for gamers all over for PC but it turned into more. It turned into people using it as the new chatroom method, making friendships and making their own personal groups! Discord has so many different uses. I suggest checking out discord.me for more groups! Even asking people in other servers what they think!"
+ibot,"My name is Isabelle. My initial creator is Tarrabyte, and I was edited by AaronRules5. I was created as a welcome bot, but my functions may go beyond that in the future. Lets see what all I do!"
+isabellbot,@ibot
+isabellebot,@ibot
+help,"**__If you want to use a command, use > then use coms. The commands don't have spellcheck so make sure to get them right.__**"
+tags,**__Tags for Isabelle__**\n Ask a @mod to make you to tag you! Curret tags are @furries @creator @artist that you can pick up!
+getting-started,"**__So you wanna sell here eh?__**\n So you've come here to ask for a space in the server? That's cool! Our goal here with this server is to help people find work, make some extra money even trade if they wish! \n To get a Category and channels of your own, please show to the admins that you have at least 1 website that you host your content too. This can be any social media, Etsy, or directly! \n"
+coms,**__Commands!__** \n __Commands can be used by using the `>` and then any of the known commands.__\n```md\n# getting-started \n# Categories - Everything that has more than 1 command \n# coms (commands)\n# w - Welcome \n# help \n# tags \n# what-is-discord \n# ping \n# Time\n```
+nintendo,**__Nintendo Commands__** \n adding-player \n
+MHA,**__My Hero Acadamia Commands__** \n deku1 \n
+naughty,**__Naughty commands__** \n  tits \n boobies \n black-cock \n pussy \n ass \n
+lc, **__Lewds__** \nLewd \n naughty
+implying, ```css\n >FAGGOT!```
+DDLC,**__Doki Doki literature Club Commands__** \n natsuki \n yuri \n monika \n sayori \n puke \n 
+w," **__Welcome!__** \n```FIX\nYou have entered Furville Mall! What is this place? It's a furry creator mall of sorts! Do you create art? Fursuits? Paws? Tails?Ears? feet? Anything of that nature is welcome here!You are welcome to talk about things in #Just-A-chat to others. Please make sure to read the #rules, the #readme is optional, but helpful. A small reminder to mute the channels you don't wish to use. For a list of commands please type >help and I will assist you with what I can!\n``` \nTo get started type in **>getting-started** to get the help you need here!"
+adding-player,"**__How to add a person to the Nintendo Switch__** \n \n1. Goto the icon at the top left corner of your Switch's home screen. Here you will see where all your user main info. **Profile, Friend List, Friend Suggestions, Add friends, User settings**. \n \n1b. By clicking on your profile, you will your username which is editable, your current game, whether or your online or not,  your **friend code** and then your list of games you've played \n\n2. Click the **Add Friend** function, this will will allow you to type in another person's friend code as well.\nFor any other help, please ask in the Nintendo chat."
+getping,function(msg){msg.reply(`Latency is ${Date.now() - msg.createdTimestamp}ms. API Latency is ${Math.round(client.ws.ping)}ms`)}
+monika,"function(msg){uploadFile(msg,'./DDLC/monika.jpg')}"
+sayori,"function(msg){uploadFile(msg,'./DDLC/sayori_death.jpg')}"
+yuri,"function(msg){uploadFile(msg,'./DDLC/yuri_death.png')}"
+natsuki,"function(msg){uploadFile(msg,'./DDLC/natsuki.png')}"
+puke,"function(msg){uploadFile(msg,'./DDLC/puke.png')}"
+deku1,"function(msg){uploadFile(msg,'./mha/deku_excite.gif')}"
+tea,"function(msg){uploadFile(msg,'./AIW/tea_time.jpg')}"
+lewd,"function(msg){uploadFile(msg,'./lewd/lewd.jpg')}"
+tits,"function(msg){uploadFile(msg,'./naughty/tits.jpg')}"
+boobies,"function(msg){uploadFile(msg,'./naughty/boobies.jpg')}"
+ass,"function(msg){uploadFile(msg,'./naughty/ass.jpg')}"
+pussy,"function(msg){uploadFile(msg,'./naughty/pussy.jpg')}"
+faggotree,"function(msg){uploadFile(msg,'./naughty/faggot_tree.jpg')}"
+black-cock,"function(msg){uploadFile(msg,'./naughty/black cock.jpg')}"
+jail,"function(msg){uploadFile(msg,'./monopoly/jail.png')}"
+free,"function(msg){uploadFile(msg,'./monopoly/free.jpg')}"
+status,function(msg){changeStatus(msg)}
