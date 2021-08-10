@@ -1,2 +1,3 @@
 # Isabelle-Bot
- A bot first conceptualized by Tarrabyte. I edited it HEAVILY to look cleaner and hopefully work better.
+ A Discord Bot conceptualized by Tarrabyte.
+ Rewritten from scratch by AaronRules5.
