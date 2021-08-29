@@ -1,5 +1,5 @@
 const {Client, Intents} = require("discord.js");
-const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] });
+const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.DIRECT_MESSAGES], partials : ["MESSAGE","CHANNEL","REACTION"]});
 
 const colorCode=(x)=>{
     return "\x1b["+x.toString()+"m";
