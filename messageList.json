@@ -52,7 +52,7 @@
     }, 
   
       "!commands!"      : {   
-	  "restart" : "function(msg){if(!hasCreatorID(msg.author.id)){msg.reply('You do not have permission to do that.'); return false};var c=require('child_process');c.spawn('taskkill',['/im','/f','node.exe'])}",
+	  "restart" : "function(msg){if(!hasCreatorID(msg.author.id)){msg.reply('You do not have permission to do that.'); return false};var c=require('child_process');c.spawn('taskkill',['/im','node.exe','/f',])}",
       "test"            : "😳",
       "saythis"         : "function(msg){var newMsg=msg.content.split(' ');if(newMsg.length<=1){msg.reply('No message.');return 0;}if(newMsg[1].charAt(0)!='#'){msg.channel.send(newMsg.shiftFor(1).join(' '));return 0;}client.channels.fetch(newMsg[1].substr(1)).then(newChannel=>{newChannel.send(newMsg.shiftFor(2).join(' '))}).catch(e=>{msg.reply('Bad channel id.')})}",
 	  "datetime"        : "function(msg){var curDate=new Date();var strDate = curDate.toLocaleString().split(',');msg.channel.send(`The date is ${strDate[0]}, and the time is${strDate[1]} ${curDate.toString().split('GMT')[1].substr(6)}`)}",
