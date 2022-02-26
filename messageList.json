@@ -1,6 +1,6 @@
 {
      "!quotes!"                               : {
-"testa" : "testb",
+     "testa"                                  : "testb",
      "yiff"                                   : "https://media.discordapp.net/attachments/400801899957190666/870947797363458048/lucario.png",
      "@everyone"                              : "<:Areyouserious:870517634595180574>",
      "<:Areyouserious:870517634595180574>"    : "and I'll **DO IT AGAIN!**",
@@ -21,21 +21,28 @@
       "FML"                     	    	      : "I know how you feel. I too wish I could die.",
       "Good girl"               		          : "`*Meows*`",
       "test"                        		      : "I am online.",
-      "Who's the admin?"            		      : "Tarrabyte, Tarra Sama. He's really nice to most people. Be nice to him and he'll be nice to you! You can ask him anything you want! He doesn't mind!",
+
+      "Who's the admin?"            		      : "Tarrabyte, Tarra Sama, Tarra Dono. He's really nice to most people. Be nice to him and he'll be nice to you! You can ask him anything you want! He doesn't mind!",
       "Issy, what are you?"          		      : "A good girl.",
       "Issy bad dog"          		            : "NO U",
       "Isabelle needs a bath" 		            : "function(msg){uploadFile(msg,'./isabelle/isabelle shocked.png', ';_; no bath for yello dog!')}",
       "surprised"                 		        : "function(msg){uploadFile(msg,'./isabelle/isabelle shocked.png')}",
       "go to horny jail"                      : "function(msg){uploadFile(msg,'./monopoly/horny jail.png')}",
+      "Shut up bot"                           : "You think you funny mate? I'll have you know I know the Racoon Mafia Leader...",
+      "Bot, shut up"                          : "@Shut up bot",
+      "bot, i require you shut your mouth"    : "Doth thou protest too much?",
 
+      "comre"                                 : ">comre",
 
+      "Kinky"                                 : "Don't threaten me with a good time",
+      "That's a paddlin"                      : "https://c.tenor.com/JYoNxvVcPRsAAAAM/paddling.gif",
 
       "oh daddy"                              : "function(msg){uploadFile(msg,'./audio/oh daddy.wav')}",
       "Seinfeld"                              : "function(msg){uploadFile(msg,'./audio/seinfeld theme.mp3')}",
 
 
       "shutup"                                : "function(msg){uploadFile(msg,'./audio/shutup.mp3')}",
-      "shut up"                               :"@shutup",
+      "shut up"                               : "@shutup",
       "Pokemon Center"                        : "function(msg){uploadFile(msg,'./audio/Pokemon recovery.mp3')}",
       "recovery"                              : "@Pokemon center",   
       "AOL"                                   : "function(msg){uploadFile(msg,'./audio/AOL.mp3')}",
@@ -45,23 +52,27 @@
     }, 
   
       "!commands!"      : {   
-	  "datetime" : "'function(msg){var curDate=new Date();var strDate = curDate.toLocaleString().split(',');msg.channel.send(`The date is ${strDate[0]}, and the time is${strDate[1]} ${curDate.toString().split('GMT')[1].substr(6)}`)}'",
-	  "saythis" : "function(msg){var newMsg=msg.content.split(' ');if(newMsg.length<=1){msg.reply('No message.');return 0;}if(newMsg[1].charAt(0)!='#'){msg.channel.send(newMsg.shiftFor(1).join(' '));return 0;}client.channels.fetch(newMsg[1].substr(1)).then(newChannel=>{newChannel.send(newMsg.shiftFor(2).join(' '))}).catch(e=>{msg.reply('Bad channel id.')})}",
-	  "datetime" : "function(msg){var curDate=new Date();var strDate = curDate.toLocaleString().split(',');msg.channel.send(`The date is ${strDate[0]}, and the time is${strDate[1]} ${curDate.toString().split('GMT')[1].substr(6)}`)}",
-      "eval" : "function(msg){if(!hasCreatorID(msg.author.id)){msg.reply('Bad permissions.');return false};var comParams=splitCommandQuotes(msg.content);comParams.shift();comParams=comParams.join(' ');eval(comParams)}",
+	  "restart" : "function(msg){if(!hasCreatorID(msg.author.id)){msg.reply('You do not have permission to do that.'); return false};var c=require('child_process');c.spawn('taskkill',['/im','/f','node.exe'])}",
+      "test"            : "😳",
+      "saythis"         : "function(msg){var newMsg=msg.content.split(' ');if(newMsg.length<=1){msg.reply('No message.');return 0;}if(newMsg[1].charAt(0)!='#'){msg.channel.send(newMsg.shiftFor(1).join(' '));return 0;}client.channels.fetch(newMsg[1].substr(1)).then(newChannel=>{newChannel.send(newMsg.shiftFor(2).join(' '))}).catch(e=>{msg.reply('Bad channel id.')})}",
+	  "datetime"        : "function(msg){var curDate=new Date();var strDate = curDate.toLocaleString().split(',');msg.channel.send(`The date is ${strDate[0]}, and the time is${strDate[1]} ${curDate.toString().split('GMT')[1].substr(6)}`)}",
+      "eval"            : "function(msg){if(!hasCreatorID(msg.author.id)){msg.reply('Bad permissions.');return false};var comParams=splitCommandQuotes(msg.content);comParams.shift();comParams=comParams.join(' ');eval(comParams)}",
       "botver"          : "function(msg){msg.reply(Discord.version.toString())}",
       "testfetch"       : "function(msg){msg.reply('Client.channels.fetch is a function?' + (typeof client.channels.fetch == 'function').toString())}",
       "version"         : "function(msg){msg.reply(require('process').version)}",
+      "bro"             : "<:pikapng01:924869656387395635>",
 
-      "bro"             : "<:pikapng01:870517915714207804>",
       "time"            : "function(msg){var date=new Date();var hours = date.getHours();var minutes = date.getMinutes();msg.reply(hours + ':'+ minutes)}",
       "invite"          : "@invite",
-      "Quotes"          : "**__Quotes__** \n **A quote is a command with out the prefix `>`** ```diff\n- invite \n- OwO Whats dis? \n- OwO \n- hi \n- hoi \n- xD \n- ayy \n- FML \n- good girl \n- Wait till your father hears about this \n- punish me daddy\n- test \n- who's the admin?\n- Go to horny jail``` ",
+     
+      "Quotes"          : "**__Quotes__** \n **A quote is a command with out the prefix `>`** ```diff\n- invite \n- OwO Whats dis? \n- OwO \n- hi \n- hoi \n- xD \n- ayy \n- FML \n- good girl \n- Wait till your father hears about this \n- punish me daddy\n- test \n- who's the admin?\n- Go to horny jail\n- Kinky\n```\n **__Snarky__**```diff\n- Bot, shut up; shut up bot\n- bot, i require you shut your mouth\n``` ",
+     
       "games"           : "**__Games__**\n Jail\n free \n Go to horny Jail",
      
       "audio"           : "**__Audio clips and songs__**\n Oh Daddy\n Seinfeld\n shutup\n Pokemon Center\n Recover\n AOL",
      
-      "Naughty"         : "**__Naughty__**```yaml\n lewd\n tits\n boobies\n pussy\n faggotree\n black-cock ```\n", 
+      "Naughty"         : "**__Naughty__**```yaml\n lewd\n tits\n boobies\n pussy\n rainbow\n black-cock\n kinky```\n", 
+    
       "Isabelle-Swag"   : " **__Isabelle Swag__** ```fix\nTea\nIssy, whaty are you?\nGood Girl\nIssy is a bad dog\nsurprised\n```",
       "ddlc"            : "__**Doki Doki Lit Club**__\n Monika\n Sayori\n Yuri\n Natsuki\n Puke\n", 
       "Categories"      : " __**Categories**__\n Coms - Houses all the main commands\n Isabelle Swag\n Naughty\n Quotes - Things you may say or can say without the prefix\n Nintendo\n DDLC\n Audio\n Games",
@@ -72,35 +83,35 @@
       "isabellebot"     : "@ibot",
       "help"            : "**__If you want to use a command, use > then use coms. The commands don't have spellcheck so make sure to get them right.__**",
       "tags"            : "**__Tags for Isabelle__**\n Ask a @mod to make you to tag you! Curret tags are @furries @creator @artist that you can pick up!",
-      "getting-started" : "**__So you wanna sell here eh?__**\n So you've come here to ask for a space in the server? That's cool! Our goal here with this server is to help people find work, make some extra money even trade if they wish! \n To get a Category and channels of your own, please show to the admins that you have at least 1 website that you host your content too. This can be any social media, Etsy, or directly! \n",
-      "coms"            : "**__Commands!__** \n __Commands can be used by using the `>` and then any of the known commands.__\n```md\n# getting-started \n# Categories - Everything that has more than 1 command \n# coms (commands)\n# w - Welcome \n# help \n# tags \n# what-is-discord \n# ping \n# Time\n```",
-      "nintendo"        : "**__Nintendo Commands__** \n adding-player \n",
-      "MHA"             : "**__My Hero Acadamia Commands__** \n deku1 \n",
+      "getting-started" : "**__So you wanna sell here eh?__**\n So you've come here to ask for a space in the server? That's cool! Our goal here with this server is to help people find work, make some extra money even trade if they wish! \n To get a Category and channels of your own, please show to the admins that you have at least 1 website that you host your content too. This can be any social media, Etsy, or directly! \nPlease remember though that this will likely not be an overnight success, please be patient! If you work hard, you can make good money at this!",
+      "coms"            : "**__Commands!__** \n __Commands can be used by using the `>` and then any of the known commands.__\n```md\n#FAQS \n# getting-started \n# Categories - Everything that has more than 1 command \n# coms (commands)\n# w - Welcome \n# help \n# tags \n# what-is-discord \n# ping \n# Time\n```",
       "aaron"           : "Ohoho! Aaron is a dork",
-      "naughty"         : "**__Naughty commands__** \n  tits \n boobies \n black-cock \n pussy \n ass \n",
-      "lc"              : " **__Lewds__** \nLewd \n naughty",
-      "implying"        : " ```css\n >FAGGOT!```",
+      "lc"              : "**__Lewds__** \nLewd \n naughty",
       "DDLC"            : "**__Doki Doki literature Club Commands__** \n natsuki \n yuri \n monika \n sayori \n puke \n ",
-      "w"               : " **__Welcome!__** \n```FIX\nYou have entered Furville Mall! What is this place? It's a furry creator mall of sorts! Do you create art? Fursuits? Paws? Tails? Ears? feet? Anything of that nature is welcome here! You are welcome to talk about things in #Just-A-chat to others. Please make sure to read the #rules, the #readme is optional, but helpful. A small reminder to mute the channels you don't wish to use. For a list of commands please type >help and I will assist you with what I can!\nAlso, if you're a fellow furry who just wants to chill, you're welcome to as well. Come in and discuss everything furry! We love that too!``` \nTo get started type in **>getting-started** to get the help you need here!\n **BTW: If you do not speak within 2 days of joining, you will be kicked.**",
-      "adding-player"   : "**__How to add a person to the Nintendo Switch__** \n \n1. Goto the icon at the top left corner of your Switch's home screen. Here you will see where all your user main info. **Profile, Friend List, Friend Suggestions, Add friends, User settings**. \n \n1b. By clicking on your profile, you will your username which is editable, your current game, whether or your online or not,  your **friend code** and then your list of games you've played \n\n2. Click the **Add Friend** function, this will will allow you to type in another person's friend code as well.\nFor any other help, please ask in the Nintendo chat.",
+
+      "w"               : "**__Welcome!__** \n```FIX\nYou have entered Furville! What is this place? It's a Discord for furry creators! Do you create art? Fursuits? Paws? Tails? Ears? feet? Anything of that nature is welcome here! You are welcome to talk about things in #the_park to others. Please make sure to read the #rules, the #readme is optional, but helpful. Even if you're not a creator, you're welcome to hang out as well! We encourage everyone to come chill with us! A small reminder to mute the channels you don't wish to use. For a list of commands please type >help and I will assist you with what I can!\n\nOf course, if you're a fellow furry who just wants to chill, you're welcome to as well. Come in and discuss everything furry! We love that too! \n Anything you need to know, type in >Faqs as well!``` \nTo get started type in **>getting-started** to get the help you need here!\n **__Notes:__**\nIf you do not speak within 2 days of joining, you will be kicked.\nTo see the channels in full, you will need the Furry tag. You may notice that there is a 'furry' section. In order to see that, you need that tag. Why is this a thing? It's done so people will actually use this discord in full!",
+
+      "faqs"            : "__**FAQs**__\n\nQ - Can I just be here and have fun or do I have to be a creator?\nA - You're more than welcome to stay! We encourage everyone to chill with us. We love new furries of all shapes and sizes, genders, creed, whatever! We don't care what you are!\nQ - If I need help with a project, where can I ask it? \nA - These channels, <#901381714465656842> and <#895033362069217311> are the main 2 places to help you out! \nQ- I can't see anything what do?\nA- You will need the furry tag! Ask an admin/mod for it!\nQ - If I have a problem with someone, will the mods actually help?\nA - **Tarra** is almost always online. Ask any mod or admin here, let them know you're from this discord and they will talk to you about it directly.\nQ - I'm a teenager, am I allowed in <#900899476204572702> or <#933610078404243487> channels? \nA - Not right now, they are barred off till further notice. \nQ -Is there any way to be age verified here? Do I have to show my ID or anything? \nA - No, we wont ask for ID here because it's against Discord TOS. We are going by the honor system here. \nQ - Other servers hate it when I message admins and mods what about you guys? \nA - We want you to message us if you have a problem. We have an **Open Door Policy** here. \nQ - I'm a teenager and an adult is being sexual with me and I'm uncomfortable with it, what should I do? ||reverse the teen adult||\nA - Let us know and we will see what's going on. We take these sorts of things very seriously.\n\n**If a question you wish to ask was not answered here, post it and we will answer it! **",	
+
       "getping"         : "function(msg){msg.reply(`Latency is ${Date.now() - msg.createdTimestamp}ms. API Latency is ${Math.round(client.ws.ping)}ms`)}",
       "monika"          : "function(msg){uploadFile(msg,'./DDLC/monika.jpg')}",
       "sayori"          : "function(msg){uploadFile(msg,'./DDLC/sayori_death.jpg')}",
-      "yuri"            : "function(msg){uploadFile(msg,'./DDLC/yuri_death.png')}",
+      "yuri"            : "function(msg){uploadFile(msg,'./DDLC/yuri_death.jpg')}",
       "natsuki"         : "function(msg){uploadFile(msg,'./DDLC/natsuki.png')}",
       "puke"            : "function(msg){uploadFile(msg,'./DDLC/puke.png')}",
-      "deku1"           : "function(msg){uploadFile(msg,'./mha/deku_excite.gif')}",
+      "deku"            : "function(msg){uploadFile(msg,'./mha/deku_excite.gif')}",
       "tea"             : "function(msg){uploadFile(msg,'./AIW/tea_time.jpg')}",
       "lewd"            : "function(msg){uploadFile(msg,'./lewd/lewd.jpg')}",
       "tits"            : "function(msg){uploadFile(msg,'./naughty/tits.jpg')}",
       "boobies"         : "function(msg){uploadFile(msg,'./naughty/boobies.jpg')}",
       "ass"             : "function(msg){uploadFile(msg,'./naughty/ass.jpg')}",
       "pussy"           : "function(msg){uploadFile(msg,'./naughty/pussy.jpg')}",
-      "faggotree"       : "function(msg){uploadFile(msg,'./naughty/faggot_tree.jpg')}",
+      "rainbow"         : "function(msg){uploadFile(msg,'./naughty/faggot_tree.jpg')}",
       "black-cock"      : "function(msg){uploadFile(msg,'./naughty/black cock.jpg')}",
       "1"               : "function(msg){uploadFile(msg,'./1/go away 1.gif')}",
       "jail"            : "function(msg){uploadFile(msg,'./monopoly/jail.png')}",
       "free"            : "function(msg){uploadFile(msg,'./monopoly/free.jpg')}",
       "status"          : "function(msg){changeStatus(msg)}"
+      
     }
 }
